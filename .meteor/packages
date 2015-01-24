@@ -9,3 +9,6 @@ autopublish
 insecure
 twbs:bootstrap
 underscore
+useraccounts:core
+useraccounts:bootstrap
+accounts-password
