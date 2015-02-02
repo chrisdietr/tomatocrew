@@ -1,5 +1,10 @@
 <template name="working">
+  <body>
   This is the working template
-
+  <div class="users">
+    {{#each usersOnline}}
+      {{> userPill}}
+    {{/each}}
+  </div>
+  </body>
 </template>
-
