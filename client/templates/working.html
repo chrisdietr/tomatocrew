@@ -21,12 +21,12 @@
 
   <div class="wrapper">
     <div class="feed">
-      An activity here.<br>
-      Another activity here.<br>
-      YAAH<br>
+      {{#each latestTasks}}
+        {{> activityEntry}}
+      {{/each}}
     </div>
     <div class="users">
-      {{#each usersOnline}}
+      {{#each latestUsers}}
       {{> userPill}}
       {{/each}}
     </div>

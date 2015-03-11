@@ -1,0 +1,10 @@
+.task-username {
+  font-size: 18px;
+  font-style: bold;
+}
+
+.task-name
+{
+  padding-left: 14px;
+  /*font-style: italic;*/
+}
