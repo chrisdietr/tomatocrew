@@ -1,9 +1,16 @@
-<template name="taskStart">
+<template name="taskForm">
   <form class="main form">
     <div class="form-group">
-      <label class="control-label" for="task">Task</label>
+      <!-- <label class="control-label" for="task">Task</label> -->
       <div class="controls">
-        <input name="task" id="task" type="text" value="" placeholder="Name your task" class="form-control"/>
+
+        <div class="next-task-field">
+          <input name="task" id="task" type="text" value="" placeholder="Name your task" class="form-control"/>
+        </div>
+        <div class="next-task-submit-button">
+          <input type="submit" value="Go!" class="btn btn-primary"/>
+
+        </div>
       </div>
     </div>
 
@@ -27,7 +34,6 @@
       <option>10 mins every hour</option>
     </select> -->
 
-    <input type="submit" value="Get started!" class="btn btn-primary"/>
 
   </form>
 </template>

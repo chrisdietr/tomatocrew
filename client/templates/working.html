@@ -1,9 +1,35 @@
 <template name="working">
+
   <body>
-  <div class="users">
-    {{#each usersOnline}}
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="navwrap">
+
+        <div class="task">
+          {{> taskForm}}
+        </div>       
+      </div>
+
+<!--  DFL TODO: Might need to replace Task form with Navbar Form
+      <form class="navbar-form navbar-center" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+-->
+  </nav>
+
+  <div class="wrapper">
+    <div class="feed">
+      An activity here.<br>
+      Another activity here.<br>
+      YAAH<br>
+    </div>
+    <div class="users">
+      {{#each usersOnline}}
       {{> userPill}}
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
-  </body>
+</body>
 </template>

@@ -8,3 +8,7 @@
 //   else
 //     return "label-default"
 // };
+
+// Template.userPill.helpers ({
+//   labelClass : function() { return this.username }
+// });

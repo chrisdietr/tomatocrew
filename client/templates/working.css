@@ -1,0 +1,33 @@
+
+body,
+html {
+font-size: 18px;
+margin:0;
+padding:0;
+}
+
+body { padding-top: 30px; }
+
+.wrapper {
+  width:750px;
+  min-height: 200px;
+  margin:0 auto;
+  background:#fee;
+}
+
+.feed {
+  float: left;
+  width:480px;
+  padding:10px;
+  background: #eef;
+}
+
+.users {
+  float: right;
+  width: 230px;
+  padding: 10px;
+/*  margin: 0 auto;
+  min-height: 100%;*/
+  background: #efe;
+}
+
