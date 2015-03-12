@@ -15,9 +15,10 @@ Template.working.helpers ({
   },
 
   latestTasks : function() { 
+    var tasksUserMap;
     var tasks = Tasks.find({},{sort: {submitted: -1}, limit:50}).fetch();
     console.log("tasks " + tasks);
-    var tasksUserMap = tasks.map(
+    tasksUserMap = tasks.map(
       function(task){
         // DFL TODO: This wastes a bunch of work as we repeatedly fetch the same user
         var user = Meteor.users.findOne({_id : task.userId});

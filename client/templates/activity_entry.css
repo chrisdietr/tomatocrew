@@ -1,10 +1,33 @@
-.task-username {
-  font-size: 18px;
-  font-style: bold;
+
+.activity-entry {
+  font-size: 12px;
+  padding-left: 12px;
+  padding-bottom: 6px;
 }
 
-.task-name
+/*.detail-text {
+  font-style: italic;
+  color: #888;
+}
+*/
+
+#username {
+  font-size: 14px;
+  font: green;
+  font-weight: bold;
+}
+
+#task
 {
-  padding-left: 14px;
+  font-size: 16px;  
   /*font-style: italic;*/
+}
+
+.detail-text
+{
+  color: gray;
+}
+
+#footer 
+{  
 }

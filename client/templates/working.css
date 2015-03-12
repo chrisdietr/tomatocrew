@@ -9,7 +9,7 @@ padding:0;
 body { padding-top: 30px; }
 
 .wrapper {
-  width:750px;
+  width:650px;
   min-height: 200px;
   margin:0 auto;
   background:#fee;
@@ -17,7 +17,7 @@ body { padding-top: 30px; }
 
 .feed {
   float: left;
-  width:480px;
+  width:380px;
   padding:10px;
   background: #eef;
 }
