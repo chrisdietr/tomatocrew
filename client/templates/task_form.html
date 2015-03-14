@@ -14,9 +14,14 @@
       </div>
     </div>
 
-<!--     <label class="control-label" for="duration">Duration</label>
+
+
+
+<!--     <label class="control-label" id="duration-dropdown" for="duration">Duration</label>
     <select class="form-control">
+      <option>15 mins</option>
       <option>30 mins</option>
+      <option>45 mins</option>
       <option>1 hour</option>
       <option>1.5 hours</option>
       <option selected>2 hours</option>
@@ -33,6 +38,23 @@
       <option selected>5 mins every half hour</option>
       <option>10 mins every hour</option>
     </select> -->
+
+    <div class="modal fade" id="timerModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            Time is ticking...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   </form>

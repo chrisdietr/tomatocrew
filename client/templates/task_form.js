@@ -14,7 +14,9 @@ Template.taskForm.events({
         return alert(error.reason);        
       }
 
-      Router.go('/working');
+      $('#timerModal').modal();
+
+      // Router.go('/working');
       // Router.go('postPage', {_id: result._id});
     });
     // Router.go('/working');
