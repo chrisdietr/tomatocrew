@@ -6,7 +6,8 @@ Template.taskForm.events({
     console.log("Form submitted");
 
     var task = {
-      name : $(e.target).find('[name=task]').val()
+      name : $(e.target).find('[name=task]').val(),
+      intervalDuration : $(e.target).find('[name=intervalDuration]').val()
     }
 
     Meteor.call('taskInsert', task, function(error, result) { 
@@ -28,7 +29,7 @@ Template.taskForm.events({
         });
       };
 
-      runModalTimer(2, onComplete);
+      runModalTimer(task.intervalDuration, onComplete);
 
       // Router.go('/working');
     });
@@ -67,21 +68,76 @@ var showTimerModalTaskField = function(text) {
   document.getElementById("timerModalTaskField").innerHTML = text;
 }
 
+var pad2 = function(n) {
+  n = n + '';
+  return n.length > 1 ? n : '0' + n;
+}
+
+var clockFormat = function(date) {
+  return pad2(date.getUTCHours()) + ":" + pad2(date.getUTCMinutes()) + ":" + pad2(date.getUTCSeconds());
+}
+
+
+// DFL TODO: Scope & lifetime conflicts 
+
 var runModalTimer = function(timeleft, onComplete) {
-  setModalTimerText(timeleft);
+  var counter = setInterval(timer, 1000); // milliseconds
+  var startDate = new Date();
+  var finishDate = startDate.setSeconds(startDate.getSeconds()+timeleft);
+  
+  setModalTimerText('');
   $('#timerModal').modal();
-  var counter=setInterval(timer, 1000); // milliseconds
+
+  setModalTimerText(clockFormat(new Date(finishDate - Date.now())));
 
   function timer() {
     --timeleft;
-    if (timeleft <= 0) {
+    if (timeleft <= 1) {
       clearInterval(counter);
       //counter ended, do something here
-      setModalTimerText("");
+      setModalTimerText('');
       onComplete();
-
       return;
     }
-    setModalTimerText(timeleft + " sec");
+
+    setModalTimerText( 
+      clockFormat( new Date(finishDate - Date.now()) ) 
+    );
   }
 };
+
+
+
+// var runModalTimer = (function(){
+
+//   var counter;
+//   var startDate;
+//   var finishDate;
+//   setModalTimerText('');
+
+
+//   return function() {
+//     $('#timerModal').modal();
+//     var counter = setInterval(timer, 1000); // milliseconds
+//     var startDate = new Date();
+//     var finishDate = startDate.setSeconds(startDate.getSeconds()+timeleft);
+//     setModalTimerText(clockFormat(new Date(finishDate - Date.now())));
+
+//     function timer() {
+//       --timeleft;
+//       if (timeleft <= 1) {
+//       clearInterval(counter);
+//       //counter ended, do something here
+//       setModalTimerText('');
+//       onComplete();
+//       return;
+//     }
+
+//     setModalTimerText( 
+//       clockFormat( new Date(finishDate - Date.now()) ) 
+//     );
+    
+//     }
+
+//   };
+// })();
