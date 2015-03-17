@@ -1,6 +1,28 @@
 Meteor.subscribe("userStatus");
+Meteor.subscribe("tasksList");
 
 Template.working.helpers ({
+
+  latestTasks : function() { 
+    var tasks = Tasks.find({},{sort: {submitted: -1}, limit:50}),
+        tasksIds = _.pluck(tasks.fetch(), '_id'),
+        userIds = _.unique(_.pluck(tasks.fetch(), 'userId')),
+        userObjects = Meteor.users.find({_id: {$in: userIds}}, {fields: {username: 1, _id: 1}, multi: true}).fetch(),
+        userIdsNamesDict = {};
+
+        userObjects.map( function(userObj) {
+          userIdsNamesDict[userObj._id] = userObj.username;
+        });
+        // console.log(userIdsNamesDict);
+
+        tasksUserMap = tasks.map( function(task) {
+          return _.extend(task, {username: userIdsNamesDict[task.userId]});
+        });
+        // console.log(tasksUserMap);
+
+        return tasksUserMap;
+  },
+
   latestUsers : function() { 
     var users = Meteor.users.find({},{limit:50}).fetch(); 
     //   var users = Meteor.users.find({ "status.online": true }).fetch(); 
@@ -14,20 +36,6 @@ Template.working.helpers ({
     return userTaskMap;
   },
 
-  latestTasks : function() { 
-    var tasksUserMap;
-    var tasks = Tasks.find({},{sort: {submitted: -1}, limit:50}).fetch();
-    console.log("tasks " + tasks);
-    tasksUserMap = tasks.map(
-      function(task){
-        // DFL TODO: This wastes a bunch of work as we repeatedly fetch the same user
-        var user = Meteor.users.findOne({_id : task.userId});
-        // console.log("user ._id .username" + user + ' ' + user._id + ' ' + user.username);
-        return _.extend(task,{username:user.username});
-      }
-    );
-    return tasksUserMap;
-  }
 
 
 });

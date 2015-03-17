@@ -12,4 +12,3 @@ useraccounts:core
 useraccounts:bootstrap
 accounts-password
 mizzao:user-status
-autopublish
