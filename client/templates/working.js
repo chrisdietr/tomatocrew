@@ -1,3 +1,4 @@
+Meteor.subscribe("activeUsers");
 Meteor.subscribe("userStatus");
 Meteor.subscribe("tasksList");
 

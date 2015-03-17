@@ -1,12 +1,6 @@
-Meteor.publish("userStatus", function() {
-  return Meteor.users.find({ "status.online": true }, { fields: {'status.online' : 1} });
+Meteor.publish('activeUsers', function() {
+  return Meteor.users.find({},{fields: {_id: 1, username: 1, 'status.online' : 1}, limit: 50});
 });
-
-// DFL TODO: For some reason we're not getting all user -> username back 
-// is this a publication issue, or an issue in the template? 
-//
-// OLD: we also (may) need to publish a safe list of users other than us
-
 
 Meteor.publish('tasksList', function() {
   return Tasks.find({},{sort: {submitted: -1}, limit:50});
