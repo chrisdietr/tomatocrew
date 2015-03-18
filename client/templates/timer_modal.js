@@ -13,8 +13,6 @@ var onDummyTimerComplete = function(){
   });
 };
 
-Template.timerModal.prototype.
-
 var setTaskEditability = function(editable) {
   if (editable) {
     document.getElementById("timerModalTaskField").removeAttribute('hidden');
