@@ -83,7 +83,7 @@ var clockFormat = function(date) {
 var runModalTimer = function(timeleft, onComplete) {
   var counter = setInterval(timer, 1000); // milliseconds
   var startDate = new Date();
-  var finishDate = startDate.setSeconds(startDate.getSeconds()+timeleft);
+  var finishDate = startDate.getHours(startDate.getHours()+timeleft);
   
   setModalTimerText('');
   $('#timerModal').modal();

@@ -1,6 +1,6 @@
 Meteor.subscribe("activeUsers");
-Meteor.subscribe("userStatus");
 Meteor.subscribe("tasksList");
+Meteor.subscribe("latestUserTask");
 
 Template.working.helpers ({
 
@@ -36,7 +36,5 @@ Template.working.helpers ({
     );
     return userTaskMap;
   },
-
-
 
 });
