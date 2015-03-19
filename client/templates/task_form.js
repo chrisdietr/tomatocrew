@@ -5,11 +5,12 @@ Template.taskForm.events({
     console.log("Form submitted");
 
     var task = {
-      name : $(e.target).find('[name=task]').val(),
-      intervalDuration : $(e.target).find('[name=intervalDuration]').val()
+      name : $(e.target).find('[name=task]').val()
     }
 
-    Meteor.call('taskInsert', task, function(error, result) { 
+    var duration = $(e.target).find('[name=intervalDuration]').val();
+
+    Meteor.call('taskInsert', task, duration, function(error, result) { 
       // display the error to the user and abort
       if (error) {
         return alert(error.reason);        

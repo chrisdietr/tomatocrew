@@ -1,8 +1,6 @@
 <template name="timerModal">
-  <!-- DFL TODO: Trigger timer without having to stuff this non-object into the template -->
-  1<br>2<br>
-  {{ latestUserTaskName }}<br>
-  3<br>
+  <!-- DFL TODO: Trigger timer modal without stuffing this into template -->
+  <div hidden>{{ latestUserTaskName }}</div>
   <div class="modal fade" id="timerModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
