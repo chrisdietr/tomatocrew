@@ -1,6 +1,5 @@
 Meteor.subscribe("activeUsers");
 Meteor.subscribe("tasksList");
-Meteor.subscribe("latestUserTask");
 
 Template.working.helpers ({
 

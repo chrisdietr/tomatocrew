@@ -1,3 +1,31 @@
+Meteor.subscribe("tasksList");
+Meteor.subscribe("latestUserTask");
+
+Template.timerModal.helpers ({
+ 
+  // DFL TODO: We're relying on this helper being triggered by including {{latestUserTaskName}}
+  // in the template. Should to subscribe / Dep / etc directly without template.
+  latestUserTaskName : function() { 
+    var task = Tasks.findOne({userId: Meteor.userId()}, {sort: {submitted: -1}});
+    var nowDate = new Date();
+    var taskEndDate = new Date(task.endDate);
+
+    console.log(task);
+    if ( taskEndDate > nowDate) {
+      dummyTimerSetup(10);
+    } 
+    return task.name + " : " + task.endDate;
+  },
+});
+
+// Template.timerModal.events({ 
+
+//   'click abort': function () {
+//     console.log("BLAAA DEEEE BLAA");
+//   }
+// });
+
+
 
 dummyTimerSetup = function (duration) {
       setModalTitleText("Working. Focus!");

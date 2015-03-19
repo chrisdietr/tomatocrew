@@ -14,9 +14,6 @@ Template.taskForm.events({
       if (error) {
         return alert(error.reason);        
       }
-
-      // DFL TODO: Bind the timer setup to a reactive Variable instead of invoking directly
-      dummyTimerSetup(task.intervalDuration);
     });
   }
 });
