@@ -60,12 +60,10 @@ var setModalTimerTask = function(text) {
   document.getElementById("taskField").value = text;
 }
 
-var showTimerModalTaskField = function(text) {
-  document.getElementById("timerModalTaskField").innerHTML = text;
-}
 
-
-// DFL TODO: Handle / disallow multiple (local) timers. Cancel local timer on remote cancel.
+// DFL TODO: Handle / disallow multiple (local) timers. 
+// Make sure there's just one common variable that holds the counter locally.
+// And cancel this when we get a remote cancel event
 
 var runModalTimer = function(task, onComplete) {
 
