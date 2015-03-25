@@ -6,27 +6,19 @@ Template.timerModal.helpers ({
   // DFL TODO: We're relying on this helper being triggered by including {{latestUserTaskName}}
   // in the template. Should to subscribe / Dep / etc directly without template.
   latestUserTaskName : function() { 
-    var task = Tasks.findOne({userId: Meteor.userId()}, {sort: {submitted: -1}});
-    if (task) {
-      var nowDate = new Date();
-      var taskEndDate = new Date(task.endDate);
-      console.log(task);
-      if ( taskEndDate > nowDate) {
-        dummyTimerSetup(task);
-      } else {
-        // DFL TODO: invalidate task
-      }
-      return task.name + " : " + task.endDate;        
+    var task = Tasks.activeTask();
+    if(task) {
+      dummyTimerSetup(task);
     }
   },
 });
 
-// Template.timerModal.events({ 
-
-//   'click abort': function () {
-//     console.log("BLAAA DEEEE BLAA");
-//   }
-// });
+Template.timerModal.events({ 
+  'click #abort-task-btn': function () {
+    Tasks.cancelActiveTask();
+    // DFL TODO: Cancel local timers
+  }
+});
 
 
 dummyTimerSetup = function (task) {
@@ -73,7 +65,7 @@ var showTimerModalTaskField = function(text) {
 }
 
 
-// DFL TODO: Scope & lifetime conflicts 
+// DFL TODO: Handle / disallow multiple (local) timers. Cancel local timer on remote cancel.
 
 var runModalTimer = function(task, onComplete) {
 
