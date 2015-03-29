@@ -1,19 +1,18 @@
-
-Template.taskForm.events({ 
-  'submit form': function(e) {
-    e.preventDefault();
+Template.taskForm.events({
+  'submit form': function(event,  template) {
+    event.preventDefault();
     console.log("Form submitted");
 
     var task = {
-      name : $(e.target).find('[name=task]').val()
+      name : template.$('[name=task]').val()
     }
 
-    var duration = $(e.target).find('[name=intervalDuration]').val();
+    var duration = template.$('[name=intervalDuration]').val();
 
-    Meteor.call('taskInsert', task, duration, function(error, result) { 
+    Meteor.call('taskInsert', task, duration, function(error, result) {
       // display the error to the user and abort
       if (error) {
-        return alert(error.reason);        
+        return alert(error.reason);
       }
     });
   }

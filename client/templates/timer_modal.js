@@ -14,14 +14,14 @@ Template.timerModal.helpers ({
 });
 
 Template.timerModal.events({ 
-  'click #abort-task-btn': function () {
+  'click #abort-task-btn': function(event, template) {
     Tasks.cancelActiveTask();
     // DFL TODO: Cancel local timers
   }
 });
 
 
-dummyTimerSetup = function (task) {
+dummyTimerSetup = function(task) {
       setModalTitleText("Working. Focus!");
       runModalTimer(task, onDummyTimerComplete);
 };
