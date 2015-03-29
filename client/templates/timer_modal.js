@@ -5,7 +5,7 @@ Template.timerModal.helpers ({
 
   // DFL TODO: We're relying on this helper being triggered by including {{latestUserTaskName}}
   // in the template. Should to subscribe / Dep / etc directly without template.
-  latestUserTaskName : function() { 
+  latestUserTaskName : function() {
     var task = Tasks.activeTask();
     if(task) {
       dummyTimerSetup(task);
@@ -13,7 +13,7 @@ Template.timerModal.helpers ({
   },
 });
 
-Template.timerModal.events({ 
+Template.timerModal.events({
   'click #abort-task-btn': function(event, template) {
     Tasks.cancelActiveTask();
     // DFL TODO: Cancel local timers
@@ -38,28 +38,26 @@ var onDummyTimerComplete = function(){
 
 var setTaskEditability = function(editable) {
   if (editable) {
-    document.getElementById("timerModalTaskField").removeAttribute('hidden');
-    document.getElementById("timerModalTask").setAttribute('hidden', '');
+    $('#timerModalTaskField').show();
+    $('#timerModalTask').hide();
   } else {
-    document.getElementById("timerModalTaskField").setAttribute('hidden');
-    document.getElementById("timerModalTask").removeAttribute('hidden');    
+    $('#timerModalTaskField').hide();
+    $('#timerModalTask').show();
   }
 }
 
 var setModalTitleText = function(text) {
-  document.getElementById("timerModalTitle").innerHTML = text;
+  $('#timerModalTitle').html(text);
 }
 
-
 var setModalTimerText = function(text) {
-  document.getElementById("timerModalTime").innerHTML = text;
+  $('#timerModalTime').html(text);
 }
 
 var setModalTimerTask = function(text) {
-  document.getElementById("timerModalTask").innerHTML = text;
-  document.getElementById("taskField").value = text;
+  $('#timerModalTask').html(text);
+  $('#taskField').html(text);
 }
-
 
 // DFL TODO: Handle / disallow multiple (local) timers. 
 // Make sure there's just one common variable that holds the counter locally.
@@ -68,11 +66,11 @@ var setModalTimerTask = function(text) {
 var runModalTimer = function(task, onComplete) {
 
   if (task.endDate < new Date()) {
-    console.log("Tried running timer for past date");
+    console.error("Tried running timer for date in the past");
     return;
   }
   var counter = setInterval(timer, 1000); // milliseconds
-  var timeleft = Timer.secondsTilDate(task.endDate);  
+  var timeleft = Timer.secondsTilDate(task.endDate);
 
   // setModalTimerText('');
   // setModalTimerTask('');
@@ -86,6 +84,8 @@ var runModalTimer = function(task, onComplete) {
     if (timeleft <= 0) {
       clearInterval(counter);
       setModalTimerText('__:__:00');
+      $('#timerModalTaskField').removeAttribute('hidden');
+
       onComplete();
       return;
     }
