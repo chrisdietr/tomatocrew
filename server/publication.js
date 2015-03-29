@@ -2,7 +2,7 @@ Meteor.publish('activeUsers', function() {
   return Meteor.users.find({},{fields: {_id: 1, username: 1, 'status.online' : 1}, limit: 50});
 });
 
-Meteor.publish('latestUserTask', function () {
+Meteor.publish('latestUserTask', function() {
   return Tasks.find({userId: this.userId},{sort: {submitted: -1}, limit: 100});
 });
 

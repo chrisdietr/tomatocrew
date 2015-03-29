@@ -1,11 +1,11 @@
 Timer = {
-  secondsTilDate : function (date) {
+  secondsTilDate : function(date) {
     var startDate = new Date();
     var endDate = new Date(date);
     return Math.round((endDate.getTime() - startDate.getTime()) / 1000);
   },
 
-  counterForSeconds : function (seconds) {
+  counterForSeconds : function(seconds) {
 
     var pad2 = function(num) {
       num += '';
