@@ -8,60 +8,62 @@ Template.timerModal.helpers ({
   latestUserTaskName : function() {
     var task = Tasks.activeTask();
     if(task) {
-      dummyTimerSetup(task);
+      setModalTitle("Working. Focus!");
+      runModalTimer(task, onTimerComplete);
+    } else {
+      $('#timerModal').modal('hide');
+      clearCountdownCounter();
     }
-  },
+  }
 });
 
 Template.timerModal.events({
   'click #abort-task-btn': function(event, template) {
-    Tasks.cancelActiveTask();
-    // DFL TODO: Cancel local timers
+    clearCountdownCounter();
+    Tasks.cancelActiveTasks();
   }
 });
 
-
-dummyTimerSetup = function(task) {
-      setModalTitleText("Working. Focus!");
-      runModalTimer(task, onDummyTimerComplete);
-};
-
-var onDummyTimerComplete = function(){
-  setModalTitleText("Done!");
-
+var onTimerComplete = function(){
+  setModalTitle("Done!");
   // DFL TODO: Break mode
   // setTaskEditability(true);
   // runModalTimer(3, function(){
-  //   setModalTitleText("DONE")
+  //   setModalTitle("DONE")
   // });
 };
 
-var setTaskEditability = function(editable) {
-  if (editable) {
-    $('#timerModalTaskField').show();
-    $('#timerModalTask').hide();
-  } else {
-    $('#timerModalTaskField').hide();
-    $('#timerModalTask').show();
-  }
-}
+// HTML Document Setters and Getters
 
-var setModalTitleText = function(text) {
+//var setTaskEditability = function(editable) {
+//  if (editable) {
+//    $('#timerModalTaskField').show();
+//    $('#timerModalTask').hide();
+//  } else {
+//    $('#timerModalTaskField').hide();
+//    $('#timerModalTask').show();
+//  }
+//}
+
+var setModalTitle = function(text) {
   $('#timerModalTitle').html(text);
-}
+};
 
 var setModalTimerText = function(text) {
   $('#timerModalTime').html(text);
-}
+};
 
 var setModalTimerTask = function(text) {
   $('#timerModalTask').html(text);
   $('#taskField').html(text);
-}
+};
+var countdownCounter;
 
-// DFL TODO: Handle / disallow multiple (local) timers. 
-// Make sure there's just one common variable that holds the counter locally.
-// And cancel this when we get a remote cancel event
+var clearCountdownCounter = function clearCountdownCounter() {
+  if (countdownCounter) {
+    Meteor.clearInterval(countdownCounter);
+  }
+};
 
 var runModalTimer = function(task, onComplete) {
 
@@ -69,23 +71,21 @@ var runModalTimer = function(task, onComplete) {
     console.error("Tried running timer for date in the past");
     return;
   }
-  var counter = setInterval(timer, 1000); // milliseconds
   var timeleft = Timer.secondsTilDate(task.endDate);
 
-  // setModalTimerText('');
-  // setModalTimerTask('');
+  clearCountdownCounter();
+  countdownCounter = Meteor.setInterval(timer, 1000); // milliseconds
 
-  $('#timerModal').modal();
+  $('#timerModal').modal('show');
   setModalTimerTask(task.name);
   setModalTimerText(Timer.counterForSeconds(timeleft));
 
   function timer() {
     --timeleft;
+    console.log('tick');
     if (timeleft <= 0) {
-      clearInterval(counter);
-      setModalTimerText('__:__:00');
-      $('#timerModalTaskField').removeAttribute('hidden');
-
+      clearCountdownCounter();
+      setModalTimerText(Timer.counterForSeconds(timeleft));
       onComplete();
       return;
     }
@@ -93,3 +93,5 @@ var runModalTimer = function(task, onComplete) {
     setModalTimerText(Timer.counterForSeconds(timeleft));
   }
 };
+
+
