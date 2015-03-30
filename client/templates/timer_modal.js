@@ -1,4 +1,3 @@
-Meteor.subscribe("tasksList");
 Meteor.subscribe("latestUserTask");
 
 Template.timerModal.helpers ({
