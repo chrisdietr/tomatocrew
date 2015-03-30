@@ -1,6 +1,3 @@
-Meteor.subscribe("activeUsers");
-Meteor.subscribe("tasksList");
-
 Template.working.helpers({
 
   latestTasks: function() {
@@ -22,8 +19,7 @@ Template.working.helpers({
   },
 
   latestUsers: function() {
-    var users = Meteor.users.find({}, {limit: 50}).fetch();
-    //   var users = Meteor.users.find({ "status.online": true }).fetch(); 
+    var users = Meteor.users.find({}, {sort: {'status.lastLogin.date': -1}, limit: 50}).fetch();
     var userTaskMap = users.map(
       function(user) {
         var topTask = Tasks.findOne({userId: user._id}, {sort: {submitted: -1}});

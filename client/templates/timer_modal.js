@@ -1,5 +1,3 @@
-Meteor.subscribe("latestUserTask");
-
 Template.timerModal.helpers ({
 
   // DFL TODO: We're relying on this helper being triggered by including {{latestUserTaskName}}
