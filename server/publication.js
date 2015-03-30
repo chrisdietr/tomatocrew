@@ -1,5 +1,5 @@
 Meteor.publish('activeUsers', function() {
-  return Meteor.users.find({},{fields: {_id: 1, username: 1, 'status.online' : 1}, limit: 50});
+  return Meteor.users.find({},{fields: {username: 1, 'status.online' : 1}, sort: {'status.lastLogin.date': -1}, limit: 50});
 });
 
 Meteor.publish('latestUserTask', function() {
@@ -11,9 +11,7 @@ Meteor.publish('tasksList', function() {
 });
 
 Meteor.publish('tasksListUsers', function() {
-  var tasks = Tasks.find({},{sort: {submitted: -1}, limit:50}),
-      tasksIds = _.pluck(tasks.fetch(), '_id'),
-      userIds = _.pluck(tasks.fetch(), 'userId');
-      userIds = _.unique(userIds);
-      return Meteor.users.find({_id: {$in: userIds}}, {fields: {username: 1, userId: 1}, multi: true});
+  var tasks = Tasks.find({}, {sort: {submitted: -1}, limit: 50});
+  var userIds = _.unique(_.pluck(tasks.fetch(), 'userId'));
+  return Meteor.users.find({_id: {$in: userIds}}, {fields: {username: 1, userId: 1}, multi: true});
 });
