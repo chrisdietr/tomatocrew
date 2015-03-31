@@ -1,8 +1,6 @@
-Template.timerModal.helpers ({
+Template.timerModal.onRendered(function() {
 
-  // DFL TODO: We're relying on this helper being triggered by including {{latestUserTaskName}}
-  // in the template. Should to subscribe / Dep / etc directly without template.
-  latestUserTaskName : function() {
+  var checkActiveTask = function() {
     var task = Tasks.activeTask();
     if(task) {
       setModalTitle("Working. Focus!");
@@ -12,6 +10,8 @@ Template.timerModal.helpers ({
       clearCountdownCounter();
     }
   }
+
+  this.autorun(checkActiveTask);
 });
 
 Template.timerModal.events({
@@ -82,6 +82,7 @@ var runModalTimer = function(task, onComplete) {
     console.log('tick');
     if (timeleft <= 0) {
       clearCountdownCounter();
+      timeleft = 0;
       setModalTimerText(Timer.counterForSeconds(timeleft));
       onComplete();
       return;
