@@ -17,7 +17,12 @@ Template.timerModal.onRendered(function() {
 Template.timerModal.events({
   'click #abort-task-btn': function(event, template) {
     clearCountdownCounter();
-    Tasks.cancelActiveTasks();
+    Meteor.call('cancelActiveTasks', new Date(), function(error, result) {
+      // display the error to the user and abort
+      if (error) {
+        return alert(error.reason);
+      }
+    });
   }
 });
 
