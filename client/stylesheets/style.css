@@ -109,3 +109,12 @@ body { padding-top: 30px; }
 #footer 
 {  
 }
+
+#logout-box {
+  float: right;
+  padding-right: 10px;
+}
+
+#logout-link {
+  font-size: 12px;
+}
