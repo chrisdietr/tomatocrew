@@ -1,0 +1,17 @@
+<template name="working">
+  <body>
+    {{> header}}
+    <div class="wrapper">
+      <div class="feed">
+        {{#each latestTasks}}
+        {{> activityEntry}}
+        {{/each}}
+      </div>
+      <div class="users">
+        {{#each latestUsers}}
+        {{> userPill}}
+        {{/each}}
+      </div>
+    </div>
+  </body>
+</template>

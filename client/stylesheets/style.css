@@ -1,0 +1,111 @@
+
+body,
+html {
+font-size: 18px;
+margin:0;
+padding:0;
+}
+
+body { padding-top: 30px; }
+
+.wrapper {
+  width:650px;
+  min-height: 200px;
+  margin:0 auto;
+  background:#fee;
+}
+
+.feed {
+  float: left;
+  width:380px;
+  padding:10px;
+  padding-top: 20px;
+  background: #eef;
+}
+
+.users {
+  float: right;
+  width: 230px;
+  padding: 10px;
+/*  margin: 0 auto;
+  min-height: 100%;*/
+  background: #efe;
+}
+
+
+.user {
+  font-size: 18px;
+  font-style: bold;
+}
+
+.task
+{
+  padding-left: 18px;
+  font-style: italic;
+}
+
+.user-online {
+  background: #cfc;
+}
+
+.user-offline {
+  background: #ccf;
+}
+
+/*
+.form-control {
+  width: 200px;
+  font-size: 20px;
+}*/
+
+.controls {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #aaa;
+
+}
+
+.next-task-field {
+  float: left;
+  padding: 10px;
+}
+
+.next-task-submit-button {
+  float: left;
+  padding: 10px;
+}
+
+
+.activity-entry {
+  font-size: 12px;
+  padding-left: 12px;
+  padding-bottom: 6px;
+}
+
+/*.detail-text {
+  font-style: italic;
+  color: #888;
+}
+*/
+
+#username {
+  font-size: 14px;
+  font: green;
+  font-weight: bold;
+}
+
+#task
+{
+  font-size: 16px;  
+  /*font-style: italic;*/
+}
+
+.detail-text
+{
+  color: gray;
+}
+
+#footer 
+{  
+}

@@ -1,0 +1,41 @@
+<template name="taskForm">
+  <form class="main form">
+    <div class="form-group">
+      <!-- <label class="control-label" for="task">Task</label> -->
+      <div class="controls">
+
+        <div class="next-task-field">
+          <input name="task" id="task" type="text" value="" placeholder="Name your task" class="form-control"/>
+          <input type="hidden" name="intervalDuration" value=".1">
+        </div>
+        <div class="next-task-submit-button">
+          <input type="submit" value="Go!" class="btn btn-primary"/>
+
+        </div>
+      </div>
+    </div>
+
+<!--     <label class="control-label" id="duration-dropdown" for="duration">Duration</label>
+    <select class="form-control">
+      <option>15 mins</option>
+      <option>30 mins</option>
+      <option>45 mins</option>
+      <option>1 hour</option>
+      <option>1.5 hours</option>
+      <option selected>2 hours</option>
+      <option>2.5 hours</option>
+      <option>3 hours</option>
+      <option>4 hours</option>
+      <option>5 hours</option>
+      <option>6 hours</option>
+    </select> -->
+
+<!--     <label class="control-label" for="duration">Scheduled Breaks</label>
+    <select class="form-control">
+      <option>None</option>
+      <option selected>5 mins every half hour</option>
+      <option>10 mins every hour</option>
+    </select> -->
+  </form>
+</template>
+
