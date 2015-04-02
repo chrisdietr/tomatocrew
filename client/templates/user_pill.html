@@ -1,10 +1,5 @@
 <template name="userPill">
-  <!-- <div class="user {{userStatusClass}}"> -->
-  <div class="user">
-    {{user.username}}
+  <div class="user" id="user-pill">
+    <img class="avatar-image {{userStatusClass}}" src="{{profile.avatarUrl}}">
   </div>
-  <div class="task">
-    {{task.name}}
-  </div>
-  <!-- Clean up above. Should data come in dict with new 'user' and 'task'? Maybe not -->
 </template>

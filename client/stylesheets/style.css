@@ -58,7 +58,7 @@ body { padding-top: 30px; }
 }*/
 
 #next-task-controls {
-  width: 400px;
+  width: 500px;
   margin-left: auto;
   margin-right: auto;
   background: #aaa;
@@ -68,6 +68,7 @@ body { padding-top: 30px; }
 #next-task-field {
   float: left;
   padding: 10px;
+  width: 250px;
 }
 
 #next-task-submit-button {
@@ -94,15 +95,24 @@ body { padding-top: 30px; }
 }
 #activity-wrapper #text-wrapper {
   float: right;
-  width: 320px;
+  width: 360px;
   max-height: 120px;
   /*background: #ccf;*/
 }
 
 #activity-wrapper .avatar {
   float: left;
+  height: 20px;
+  width: 20px;
   padding: 0px 10px 0px 0px;
+
 }
+
+#activity-wrapper .avatar-image {
+  width:  40px;
+  height: 40px;
+}
+
 #activity-wrapper #text-wrapper #task {
   max-height: 70px;
   overflow: scroll;
@@ -136,6 +146,27 @@ body { padding-top: 30px; }
 {
 }
 
+
+.avatar-image {
+  border-radius: 10px;
+}
+
+#user-pill {
+  padding: 5px;
+}
+
+#user-pill .avatar-image{
+  width:  70px;
+  height: 70px;
+}
+
+#user-pill .user-online {
+  border:3px solid #2d2;
+}
+
+/*
+ *  Navigation
+ */
 #logout-box {
   float: right;
   padding-right: 10px;

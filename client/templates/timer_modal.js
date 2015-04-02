@@ -55,7 +55,8 @@ var resetCountdownTimer = function resetCountdownTimer() {
 };
 
 var runModalTimer = function(task, onComplete) {
-
+  var snd;
+  Notification.requestPermission();
   if (task.endDate < new Date()) {
     console.error("Tried running timer for date in the past");
     return;
@@ -70,12 +71,15 @@ var runModalTimer = function(task, onComplete) {
   setModalTimerText(Timer.counterForSeconds(timeleft));
 
   function timer() {
+    snd = snd ? snd : new Audio("sounds-882-solemn.mp3");
     --timeleft;
     console.log('tick');
     if (timeleft <= 0) {
       resetCountdownTimer();
       timeleft = 0;
       setModalTimerText(Timer.counterForSeconds(timeleft));
+      var notification = new Notification("Timer Finished!");
+      snd.play();
       onComplete();
       return;
     }
