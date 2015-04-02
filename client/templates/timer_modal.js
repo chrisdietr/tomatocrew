@@ -3,7 +3,7 @@ Template.timerModal.onRendered(function() {
   var checkActiveTask = function() {
     var task = Tasks.activeTask();
     if(task) {
-      setModalTitle("Working. Focus!");
+      //setModalTitle("Working. Focus!");
       runModalTimer(task, onTimerComplete);
     } else {
       $('#timerModal').modal('hide');
@@ -27,9 +27,8 @@ Template.timerModal.events({
 });
 
 var onTimerComplete = function(){
-  setModalTitle("Done!");
+  //setModalTitle("Done!");
   // DFL TODO: Break mode
-  // setTaskEditability(true);
   // runModalTimer(3, function(){
   //   setModalTitle("DONE")
   // });
@@ -37,28 +36,15 @@ var onTimerComplete = function(){
 
 // HTML Document Setters and Getters
 
-//var setTaskEditability = function(editable) {
-//  if (editable) {
-//    $('#timerModalTaskField').show();
-//    $('#timerModalTask').hide();
-//  } else {
-//    $('#timerModalTaskField').hide();
-//    $('#timerModalTask').show();
-//  }
-//}
-
 var setModalTitle = function(text) {
-  $('#timerModalTitle').html(text);
+  $('#modal-timer-title').html(text);
 };
 
 var setModalTimerText = function(text) {
-  $('#timerModalTime').html(text);
+  $('#modal-timer-time').html(text);
+  $(document).attr("title", text);
 };
 
-var setModalTimerTask = function(text) {
-  $('#timerModalTask').html(text);
-  $('#taskField').html(text);
-};
 var countdownCounter;
 
 var clearCountdownCounter = function clearCountdownCounter() {
@@ -79,7 +65,7 @@ var runModalTimer = function(task, onComplete) {
   countdownCounter = Meteor.setInterval(timer, 1000); // milliseconds
 
   $('#timerModal').modal('show');
-  setModalTimerTask(task.name);
+  setModalTitle(task.name);
   setModalTimerText(Timer.counterForSeconds(timeleft));
 
   function timer() {

@@ -9,18 +9,17 @@ padding:0;
 body { padding-top: 30px; }
 
 .wrapper {
-  width:650px;
+  width:700px;
   min-height: 200px;
   margin:0 auto;
-  background:#fee;
+  /*background:#fee;*/
 }
 
 .feed {
   float: left;
-  width:380px;
-  padding:10px;
-  padding-top: 20px;
-  background: #eef;
+  width:430px;
+  padding: 20px 0px;
+  /*background: #eef;*/
 }
 
 .users {
@@ -29,7 +28,7 @@ body { padding-top: 30px; }
   padding: 10px;
 /*  margin: 0 auto;
   min-height: 100%;*/
-  background: #efe;
+  /*background: #efe;*/
 }
 
 
@@ -58,30 +57,57 @@ body { padding-top: 30px; }
   font-size: 20px;
 }*/
 
-.controls {
-  width: 300px;
+#next-task-controls {
+  width: 400px;
   margin-left: auto;
   margin-right: auto;
   background: #aaa;
 
 }
 
-.next-task-field {
+#next-task-field {
   float: left;
   padding: 10px;
 }
 
-.next-task-submit-button {
+#next-task-submit-button {
+  float: left;
+  padding: 10px;
+}
+
+#next-task-duration-selector {
   float: left;
   padding: 10px;
 }
 
 
-.activity-entry {
+#activity-wrapper {
   font-size: 12px;
   padding-left: 12px;
   padding-bottom: 6px;
+  /*background: #afa;*/
+  /*min-height: 200px;*/
+  max-height: 400px;
+  height: 120px;
+  /*overflow:scroll;*/
+
 }
+#activity-wrapper #text-wrapper {
+  float: right;
+  width: 320px;
+  max-height: 120px;
+  /*background: #ccf;*/
+}
+
+#activity-wrapper .avatar {
+  float: left;
+  padding: 0px 10px 0px 0px;
+}
+#activity-wrapper #text-wrapper #task {
+  max-height: 70px;
+  overflow: scroll;
+}
+
 
 /*.detail-text {
   font-style: italic;
@@ -97,7 +123,7 @@ body { padding-top: 30px; }
 
 #task
 {
-  font-size: 16px;  
+  font-size: 16px;
   /*font-style: italic;*/
 }
 
@@ -107,7 +133,7 @@ body { padding-top: 30px; }
 }
 
 #footer 
-{  
+{
 }
 
 #logout-box {
@@ -118,3 +144,18 @@ body { padding-top: 30px; }
 #logout-link {
   font-size: 12px;
 }
+
+/*
+ * Modal Timer Window
+ */
+
+#modal-timer-title {
+  text-align: center;
+}
+
+#modal-timer-time {
+  font-size: 90px;
+  text-align: center;
+  padding: 20px;
+}
+

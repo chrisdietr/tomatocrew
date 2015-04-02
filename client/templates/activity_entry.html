@@ -1,11 +1,13 @@
 <template name="activityEntry">
-    <div class="activity-entry">
+    <div id="activity-wrapper">
       <div class="avatar"><img src="{{avatarUrl}}"></div>
-      <div class="top-line">
-        <span id="username">{{username}}</span>
-        <span class="detail-text">started</span>
+      <div id="text-wrapper">
+        <div class="top-line">
+          <span id="username">{{username}}</span>
+          <span id="detail-text">started</span>
+        </div>
+        <div id="task">{{name}}</div>
+        <div class="detail-text" id="footer">25 mins &bull;{{submitted}}</div>
       </div>
-      <div id="task">{{name}}</div>
-      <div class="detail-text" id="footer">25 mins &bull;{{submitted}}</div>
     </div>
 </template>
