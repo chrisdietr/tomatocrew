@@ -3,16 +3,20 @@ Template.working.helpers({
   latestTasks: function() {
     var tasks = Tasks.find({}, {sort: {submitted: -1}, limit: 50});
     var userIds = _.unique(_.pluck(tasks.fetch(), 'userId'));
-    var userObjects = Meteor.users.find({_id: {$in: userIds}}, {fields: {username: 1, _id: 1}, multi: true}).fetch();
+    var userObjects = Meteor.users.find({_id: {$in: userIds}},
+      {fields: {username: 1, _id: 1, 'profile.avatarUrl': 1}}
+    ).fetch();
     var userIdsNamesDict = {};
     var tasksUserMap;
 
     userObjects.map(function(userObj) {
-      userIdsNamesDict[userObj._id] = userObj.username;
+      var avatar = userObj.profile ? userObj.profile.avatarUrl : '';
+      userIdsNamesDict[userObj._id] = { username: userObj.username, avatarUrl: avatar};
     });
 
     tasksUserMap = tasks.map(function(task) {
-      return _.extend(task, {username: userIdsNamesDict[task.userId]});
+      var userEntry = userIdsNamesDict[task.userId];
+      return _.extend(task, {username: userEntry.username, avatarUrl: userEntry.avatarUrl});
     });
 
     return tasksUserMap;

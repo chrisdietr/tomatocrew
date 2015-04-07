@@ -7,7 +7,7 @@ Template.taskForm.events({
       name : template.$('[name=task]').val()
     }
 
-    var duration = template.$('[name=intervalDuration]').val();
+    var duration = template.$('#task-duration option:selected').val();
 
     Meteor.call('taskInsert', task, duration, function(error, result) {
       // display the error to the user and abort
