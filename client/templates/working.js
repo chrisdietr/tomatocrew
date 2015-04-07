@@ -23,14 +23,6 @@ Template.working.helpers({
   },
 
   latestUsers: function() {
-    var users = Meteor.users.find({}, {sort: {'status.lastLogin.date': -1}, limit: 100}).fetch();
-    return users;
-    //var userTaskMap = users.map(
-    //  function(user) {
-    //    var topTask = Tasks.findOne({userId: user._id}, {sort: {submitted: -1}});
-    //    return {'user': user, 'task': topTask}
-    //  }
-    //);
-    //return userTaskMap;
+    return Meteor.users.find({}, {sort: {'status.lastLogin.date': -1}, limit: 100}).fetch();
   }
 });
