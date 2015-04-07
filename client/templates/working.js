@@ -4,7 +4,7 @@ Template.working.helpers({
     var tasks = Tasks.find({}, {sort: {submitted: -1}, limit: 50});
     var userIds = _.unique(_.pluck(tasks.fetch(), 'userId'));
     var userObjects = Meteor.users.find({_id: {$in: userIds}},
-      {fields: {username: 1, _id: 1, 'profile.avatarUrl': 1}, multi: true}
+      {fields: {username: 1, _id: 1, 'profile.avatarUrl': 1}}
     ).fetch();
     var userIdsNamesDict = {};
     var tasksUserMap;
