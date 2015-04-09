@@ -9,22 +9,23 @@ padding:0;
 body { padding-top: 30px; }
 
 .wrapper {
-  width:700px;
+  width:600px;
   min-height: 200px;
   margin:0 auto;
+  padding: 0px 0px 0px 30px;
   /*background:#fee;*/
 }
 
 .feed {
   float: left;
   width:430px;
-  padding: 20px 0px;
+  padding: 20px 0px 20px 0px;
   /*background: #eef;*/
 }
 
 .users {
   float: right;
-  width: 230px;
+  width: 130px;
   padding: 10px;
 /*  margin: 0 auto;
   min-height: 100%;*/
