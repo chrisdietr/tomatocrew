@@ -7,7 +7,7 @@ Template.timerModal.onRendered(function() {
       runModalTimer(task, onTimerComplete);
     } else {
       $('#timerModal').modal('hide');
-      clearCountdownCounter();
+      resetCountdownTimer();
     }
   }
 
@@ -16,7 +16,7 @@ Template.timerModal.onRendered(function() {
 
 Template.timerModal.events({
   'click #abort-task-btn': function(event, template) {
-    clearCountdownCounter();
+    resetCountdownTimer();
     Meteor.call('cancelActiveTasks', new Date(), function(error, result) {
       // display the error to the user and abort
       if (error) {
@@ -42,26 +42,28 @@ var setModalTitle = function(text) {
 
 var setModalTimerText = function(text) {
   $('#modal-timer-time').html(text);
-  $(document).attr("title", text);
+  document.title = text;
 };
 
 var countdownCounter;
 
-var clearCountdownCounter = function clearCountdownCounter() {
+var resetCountdownTimer = function resetCountdownTimer() {
   if (countdownCounter) {
     Meteor.clearInterval(countdownCounter);
   }
+  document.title = '';
 };
 
 var runModalTimer = function(task, onComplete) {
-
+  var snd;
+  Notification.requestPermission();
   if (task.endDate < new Date()) {
     console.error("Tried running timer for date in the past");
     return;
   }
   var timeleft = Timer.secondsTilDate(task.endDate);
 
-  clearCountdownCounter();
+  resetCountdownTimer();
   countdownCounter = Meteor.setInterval(timer, 1000); // milliseconds
 
   $('#timerModal').modal('show');
@@ -69,12 +71,15 @@ var runModalTimer = function(task, onComplete) {
   setModalTimerText(Timer.counterForSeconds(timeleft));
 
   function timer() {
+    snd = snd ? snd : new Audio("sounds-882-solemn.mp3");
     --timeleft;
     console.log('tick');
     if (timeleft <= 0) {
-      clearCountdownCounter();
+      resetCountdownTimer();
       timeleft = 0;
       setModalTimerText(Timer.counterForSeconds(timeleft));
+      var notification = new Notification("Timer Finished!");
+      snd.play();
       onComplete();
       return;
     }
