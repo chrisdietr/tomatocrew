@@ -1,8 +1,8 @@
 #feedback {
 	position: fixed;
 	left: 0;
-	bottom: 0;
-	height: 250px;
+	bottom: 30px;
+	height: 190px;
 	margin-left: -3px;
 	margin-bottom: -3px;
 }

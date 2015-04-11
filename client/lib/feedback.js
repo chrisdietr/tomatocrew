@@ -13,7 +13,8 @@ Template.feedback.events({
     event.preventDefault();
     console.log("Feedback submitted");
 
-    var email = template.$('#feedback-email').val();
+    //var email = template.$('#feedback-email').val();
+    var email = Meteor.user().emails[0].address;
     var body = template.$('#feedback-body').val();
 
     Meteor.call('sendFeedbackEmail', email, body, function() {

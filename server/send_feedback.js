@@ -6,6 +6,7 @@ Meteor.methods({
     // without waiting for the email sending to complete.
     this.unblock();
 
+    console.log('User feedback from: ' + from + ' \n' + text);
     try {
       Email.send({
         to: 'dustinlaverick+soprofeedback@gmail.com',
