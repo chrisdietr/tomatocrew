@@ -87,17 +87,12 @@ body { padding-top: 30px; }
   font-size: 12px;
   padding-left: 12px;
   padding-bottom: 6px;
-  /*background: #afa;*/
-  /*min-height: 200px;*/
-  max-height: 400px;
-  height: 120px;
-  /*overflow:scroll;*/
+  overflow:hidden;
 
 }
 #activity-wrapper #text-wrapper {
   float: right;
   width: 360px;
-  max-height: 120px;
   /*background: #ccf;*/
 }
 
@@ -105,8 +100,6 @@ body { padding-top: 30px; }
   float: left;
   height: 20px;
   width: 20px;
-  padding: 0px 10px 0px 0px;
-
 }
 
 #activity-wrapper .avatar-image {
@@ -115,7 +108,6 @@ body { padding-top: 30px; }
 }
 
 #activity-wrapper #text-wrapper #task {
-  max-height: 70px;
   overflow: scroll;
 }
 
@@ -128,8 +120,8 @@ body { padding-top: 30px; }
 
 #username {
   font-size: 14px;
-  font: green;
   font-weight: bold;
+  padding: 0;
 }
 
 #task
