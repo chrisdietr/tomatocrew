@@ -73,7 +73,7 @@ var runModalTimer = function(task, onComplete) {
   function timer() {
     snd = snd ? snd : new Audio("sounds-882-solemn.mp3");
     --timeleft;
-    console.log('tick');
+    //console.log('tick');
     if (timeleft <= 0) {
       resetCountdownTimer();
       timeleft = 0;
