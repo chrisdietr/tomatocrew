@@ -1,3 +1,7 @@
+Template.userPill.rendered = function() {
+  $('[data-toggle="popover"]').popover();
+};
+
 Template.userPill.helpers ({
   userStatusClass : function() { 
     // if (this.user.status.idle)
@@ -10,3 +14,4 @@ Template.userPill.helpers ({
       return "user-offline"
   }
 });
+

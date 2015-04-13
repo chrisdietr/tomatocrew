@@ -40,6 +40,10 @@ body { padding-top: 30px; }
   color: gray;
 }
 
+.users .info-header {
+  text-align: left;
+  padding: 10px 10px 20px 0px;
+}
 .user {
   font-size: 18px;
   font-style: bold;
@@ -127,8 +131,9 @@ body { padding-top: 30px; }
   /*background: #aaf;*/
   width: 70px;
   margin:0 auto;
-
+  /*cursor:pointer;*/
 }
+
 /*#user-pill #user-info-wrap{*/
   /*float: right;*/
   /*font-style: bold;*/
