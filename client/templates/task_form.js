@@ -18,3 +18,10 @@ Template.taskForm.events({
   }
 });
 
+
+Template.taskForm.onRendered(function (){
+  $('.modal').on('hidden.bs.modal', function () {
+    $('[name=task]').select();
+  })
+});
+

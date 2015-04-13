@@ -149,7 +149,7 @@ body { padding-top: 30px; }
 }
 
 #user-pill .user-online {
-  border:3px solid #2d2;
+  border: 3px solid #2d2;
 }
 /*
  *  Next Task Form
@@ -211,3 +211,9 @@ body { padding-top: 30px; }
   padding: 20px;
 }
 
+.timer-btn-active {
+}
+
+.timer-btn-inactive {
+  display: none;
+}

@@ -1,3 +1,6 @@
+var countdownCounter;
+var notification;
+
 Template.timerModal.onRendered(function() {
 
   var checkActiveTask = function() {
@@ -14,6 +17,7 @@ Template.timerModal.onRendered(function() {
   this.autorun(checkActiveTask);
 });
 
+
 Template.timerModal.events({
   'click #cancel-task-btn': function(event, template) {
     resetCountdownTimer();
@@ -26,6 +30,7 @@ Template.timerModal.events({
   },
   'click #complete-task-btn': function(event, template) {
     resetCountdownTimer();
+    notification.close();
     Meteor.call('completeActiveTasks', new Date(), function(error, result) {
       // display the error to the user and abort
       if (error) {
@@ -54,7 +59,16 @@ var setModalTimerText = function(text) {
   $(document).attr("title", text);
 };
 
-var countdownCounter;
+var setCompleteButtonStatus = function(active) {
+  if (active) {
+    $('#cancel-task-btn').removeClass("timer-btn-active").addClass("timer-btn-inactive");
+    $('#complete-task-btn').removeClass("timer-btn-inactive").addClass("timer-btn-active");
+  } else {
+    $('#complete-task-btn').removeClass("timer-btn-active").addClass("timer-btn-inactive");
+    $('#cancel-task-btn').removeClass("timer-btn-inactive").addClass("timer-btn-active");
+  }
+};
+
 
 var resetCountdownTimer = function resetCountdownTimer() {
   if (countdownCounter) {
@@ -78,6 +92,7 @@ var runModalTimer = function(task, onComplete) {
   $('#timerModal').modal('show');
   setModalTitle(task.name);
   setModalTimerText(Timer.counterForSeconds(timeleft));
+  setCompleteButtonStatus(false);
 
   function timer() {
     snd = snd ? snd : new Audio("sounds-882-solemn.mp3");
@@ -87,7 +102,8 @@ var runModalTimer = function(task, onComplete) {
       resetCountdownTimer();
       timeleft = 0;
       setModalTimerText(Timer.counterForSeconds(timeleft));
-      var notification = new Notification("Timer Finished!");
+      setCompleteButtonStatus(true);
+      notification = new Notification("Timer Finished!");
       snd.play();
       onComplete();
       return;
