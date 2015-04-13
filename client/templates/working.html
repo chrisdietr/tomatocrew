@@ -3,11 +3,17 @@
     {{> header}}
     <div class="wrapper">
       <div class="feed">
+        <div class="info-header">
+          What's getting done
+        </div>
         {{#each latestTasks}}
         {{> activityEntry}}
         {{/each}}
       </div>
       <div class="users">
+        <div class="info-header">
+          Who's around
+        </div>
         {{#each latestUsers}}
           {{> userPill}}
         {{/each}}
