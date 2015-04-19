@@ -56,7 +56,7 @@ var setModalTitle = function(text) {
 
 var setModalTimerText = function(text) {
   $('#modal-timer-time').html(text);
-  $(document).attr("title", text);
+  document.title = text;
 };
 
 var setCompleteButtonStatus = function(active) {
@@ -74,7 +74,7 @@ var resetCountdownTimer = function resetCountdownTimer() {
   if (countdownCounter) {
     Meteor.clearInterval(countdownCounter);
   }
-  $(document).attr("title", '');
+  document.title = '';
 };
 
 var runModalTimer = function(task, onComplete) {
