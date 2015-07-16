@@ -1,13 +1,5 @@
 // https://github.com/spektom/bootstrap-feedback-form
 
-Template.feedback.onRendered(function () {
-  this.$(function() {
-    $("#feedback-tab").click(function() {
-      $("#feedback-form").toggle("slide");
-    });
-  });
-});
-
 Template.feedback.events({
   'submit form': function(event, template) {
     event.preventDefault();
@@ -20,6 +12,9 @@ Template.feedback.events({
     Meteor.call('sendFeedbackEmail', email, body, function() {
       $("#feedback-form").toggle("slide").find("textarea").val('');
     });
+  },
+  'click #feedback-tab': function(){
+    $("#feedback-form").toggle("slide");
   }
 });
 

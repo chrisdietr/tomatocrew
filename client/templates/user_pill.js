@@ -1,4 +1,4 @@
-Template.userPill.rendered = function() {
+Template.userPill.onRendered = function() {
   $('[data-toggle="popover"]').popover();
 };
 
