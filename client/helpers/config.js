@@ -1,22 +1,28 @@
-// Accounts.ui.config({
-//   passwordSignupFields: 'USERNAME_AND_EMAIL'
-// });
+var email = AccountsTemplates.removeField('email');
+var pwd = AccountsTemplates.removeField('password');
 
-AccountsTemplates.removeField('email');
+email.re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
 AccountsTemplates.addFields([
+  email,
   {
-      _id: "username",
-      type: "text",
-      displayName: "username",
-      required: true,
-      minLength: 5,
+    _id: 'username',
+    type: 'text',
+    displayName: 'Username',
+    required: true,
+    minLength: 3
   },
-  {
-      _id: 'email',
-      type: 'email',
-      required: true,
-      displayName: "email",
-      re: /.+@(.+){2,}\.(.+){2,}/,
-      errStr: 'Invalid email',
-  }
+  pwd
 ]);
+
+
+AccountsTemplates.configure({
+
+  // Client-side Validation
+  continuousValidation: true,
+  negativeFeedback: true,
+  negativeValidation: true,
+  positiveValidation: true,
+  positiveFeedback: true,
+  showValidating: true,
+});
