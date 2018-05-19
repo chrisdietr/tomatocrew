@@ -1,6 +1,6 @@
 Meteor.publish('activeUsers', function() {
   return Meteor.users.find({},
-    {fields: {username: 1, 'status.online': 1, 'profile.avatarUrl': 1}, sort: {'status.lastLogin.date': -1}, limit: 50}
+    {fields: {username: 1, 'status.online': 1, 'profile.avatarUrl': 1, 'status.lastLogin.date': 1}, sort: {'status.lastLogin.date': -1}, limit: 50}
   );
 });
 

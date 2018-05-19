@@ -1,16 +1,16 @@
-Template.userPill.onRendered = function() {
+Template.userPill.rendered = function() {
   $('[data-toggle="popover"]').popover();
 };
 
 Template.userPill.helpers ({
-  userStatusClass : function() { 
+  userStatusClass : function() {
     // if (this.user.status.idle)
     //  return "user-idle"
     // else
 
     if (this.status.online)
       return "user-online"
-    else 
+    else
       return "user-offline"
   }
 });
