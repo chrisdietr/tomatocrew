@@ -1,19 +1,42 @@
 <template name="feedback">
   <div id="feedback">
+
     <div id="feedback-form" style='display:none;' class="col-xs-4 col-md-4 panel panel-default">
-      <form class="form panel-body" role="form">
-        <div class="form-group">
-          <textarea class="form-control" id="feedback-body" required autofocus placeholder="Please write your feedback here..."
-                    rows="5"></textarea>
-        </div>
+      <!--<form class="form panel-body" role="form">-->
+        <!--<div class="form-group">-->
+          <!--<textarea class="form-control" id="feedback-body" required autofocus placeholder="Please write your feedback here..."-->
+                    <!--rows="5"></textarea>-->
+        <!--</div>-->
         <!--
         <div class="form-group">
           <input class="form-control" id="feedback-email" placeholder="Your e-mail (optional)" type="email" pattern=".+@(.+){2,}\.(.+){2,}" title="example@example.com"  />
         </div>
         -->
-        <button class="btn btn-primary pull-right" type="submit">Send</button>
-      </form>
+        <!--<button class="btn btn-primary pull-right" type="submit">Send</button>-->
+      <!--</form>-->
+
+      <div class="support-text">
+        <p>
+          <strong>What is this? </strong>
+          <br>This is a social <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">pomodoro</a> timer. It lets you see and share who's being productive.
+        </p>
+        <p>
+          <strong>How does it work? </strong>
+          <br>Type a task above and click <em>Go!</em> You'll get a countdown timer and a browser notification on completion.
+        </p>
+        <p>
+          <strong>Setup Tips? </strong>
+          <br>
+          Please ensure your email has a <a href="https://en.gravatar.com/connect/" target="_blank">Gravatar</a> logo.
+          You can use <a href="http://fluidapp.com/">Fluid</a> ($5) to turn the webpage into a status bar app.
+        </p>
+        <p>
+          <br>
+          <em>Email <a href="mailto:teamtomato@laverick.org">teamtomato@laverick.org</a> with questions.</em>
+        </p>
+      </div>
+
     </div>
-    <div id="feedback-tab">Feedback</div>
+    <div id="feedback-tab">FAQ</div>
   </div>
 </template>

@@ -2,14 +2,19 @@
 	position: fixed;
 	left: 0;
 	bottom: 30px;
-	height: 190px;
+	height: 290px;
 	margin-left: -3px;
 	margin-bottom: -3px;
 }
 
+#feedback .support-text {
+	font-size: 14px;
+	margin: 10px;
+}
+
 #feedback-form {
 	float: left;
-	width: 300px;
+	width: 400px;
 	height: 100%;
 	z-index: 1000;
 	padding-left: 5px;
