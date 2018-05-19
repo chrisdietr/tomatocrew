@@ -219,3 +219,15 @@ body { padding-top: 30px; }
 .timer-btn-inactive {
   display: none;
 }
+
+
+/* Hacky way to add some help text to the signup forms */
+
+.at-pwd-form::before {
+  font-size: 14px;
+  font-style: italic;
+  color: darkmagenta;
+  content: "When registering please use your DC username, e.g. 'JoeSmith'. Profile pictures use wordpress.com's Gravatar. If you have a wordpress.com account please use the same email for simplicity.";
+}
+
+
