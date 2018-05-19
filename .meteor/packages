@@ -4,13 +4,31 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 twbs:bootstrap
 underscore
 useraccounts:core
 useraccounts:bootstrap
-accounts-password
+accounts-password@1.5.0
 mizzao:user-status
 jparker:gravatar
-email
+email@1.2.3
 momentjs:moment
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+standard-minifier-css
+standard-minifier-js
+shell-server
+dynamic-import
+iron:router
+useraccounts:iron-routing
