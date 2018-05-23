@@ -3,5 +3,11 @@
     <div id="avatar-wrap" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="{{username}}">
         <img class="avatar-image {{userStatusClass}}" src="{{profile.avatarUrl}}">
     </div>
+    <div class="user-stats">
+      {{#if profile.numPomodoros}}
+        {{profile.numPomodoros}}
+        <img class="tomato-icon" src="tomato_small.png">
+      {{/if}}
+    </div>
   </div>
 </template>

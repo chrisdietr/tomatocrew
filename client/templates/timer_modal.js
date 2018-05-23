@@ -46,6 +46,7 @@ var onTimerComplete = function(){
   // runModalTimer(3, function(){
   //   setModalTitle("DONE")
   // });
+  Meteor.call('updateNumPomodoros');
 };
 
 // HTML Document Setters and Getters

@@ -63,6 +63,19 @@ body { padding-top: 30px; }
   background: #ccf;
 }
 
+.user-stats {
+  float: left;
+  font-size: 14px;
+  height: 50px;
+  padding: 5px;
+  /*margin: 10px 10px 0px 0px;*/
+}
+
+.tomato-icon {
+  width: 14px;
+  height: 14px;
+}
+
 #activity-wrapper {
   font-size: 12px;
   padding-bottom: 10px;
@@ -77,7 +90,7 @@ body { padding-top: 30px; }
 
 #activity-wrapper .avatar {
   float: left;
-  padding: 6px 0px 0px 0px;
+  padding: 5px 0px 0px 0px;
 }
 
 #activity-wrapper .avatar-image {
@@ -122,7 +135,7 @@ body { padding-top: 30px; }
 #user-pill {
   padding: 5px;
   /*background: #afa;*/
-  width: 60px;
+  width: 120px;
   /*width: 280px;*/
   height: 60px;
 }
@@ -130,6 +143,7 @@ body { padding-top: 30px; }
 #user-pill #avatar-wrap {
   float: left;
   /*background: #aaf;*/
+  left: 0px;
   width: 50px;
   margin:0 auto;
   /*cursor:pointer;*/
