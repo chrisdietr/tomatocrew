@@ -1,6 +1,7 @@
-Template.userPill.rendered = function() {
-  $('[data-toggle="popover"]').popover();
-};
+Template.userPill.onRendered(function() {
+    console.log("Template.userPill.rendered");
+    $('[data-toggle="popover"]').popover();
+});
 
 Template.userPill.helpers ({
   userStatusClass : function() {

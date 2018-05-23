@@ -1,7 +1,7 @@
 Template.working.helpers({
 
   latestTasks: function() {
-    var tasks = Tasks.find({}, {sort: {submitted: -1}, limit: 10});
+    var tasks = Tasks.find({finishReason: {$not: Tasks.FinishReason.CANCEL}}, {sort: {submitted: -1}, limit: 50});
     var userIds = _.unique(_.pluck(tasks.fetch(), 'userId'));
     var userObjects = Meteor.users.find({_id: {$in: userIds}},
       {fields: {username: 1, _id: 1, 'profile.avatarUrl': 1}}
@@ -23,6 +23,6 @@ Template.working.helpers({
   },
 
   latestUsers: function() {
-    return Meteor.users.find({}, {sort: {'status.lastLogin.date': -1}, limit: 100}).fetch();
+    return Meteor.users.find({}, {sort: {'status.lastLogin.date': -1}, limit: 50}).fetch();
   }
 });
