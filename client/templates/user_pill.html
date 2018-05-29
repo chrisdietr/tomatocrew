@@ -3,7 +3,7 @@
     <div id="avatar-wrap">
       <img class="avatar-image {{userStatusClass}}" src="{{profile.avatarUrl}}">
     </div>
-    {{#if $or profile.weeklyPomodoros profile.totalPomodoros}}
+    {{#if profile.weeklyPomodoros}}
       <img class="tomato-icon" src="tomato_small.png">
       <div class="user-stats">
         {{profile.weeklyPomodoros}}
