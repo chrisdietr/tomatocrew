@@ -4,16 +4,14 @@ SyncedCron.add({
     return parser.text('every 3 hours');
   },
   job: function() {
-    var pastWeekUsers = Meteor.users.find({"status.lastLogin.date": {$gt: new Date(moment().subtract(1, 'week'))}});
-    pastWeekUsers.forEach(function(user){
-        Tasks.updateUserPomodoroCount(user._id);
-    });
+    Tasks.updateAllUserTasks();
   }
 });
 
 
 Meteor.startup(function() {
   SyncedCron.start();
+  Tasks.updateAllUserTasks();
 });
 
 
