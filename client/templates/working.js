@@ -23,6 +23,6 @@ Template.working.helpers({
   },
 
   latestUsers: function() {
-    return Meteor.users.find({}, {sort: {'status.lastLogin.date': -1}, limit: 50}).fetch();
+    return Meteor.users.find({}, {sort: {'status.online': -1, 'profile.weeklyPomodoros': -1}, limit: 50}).fetch();
   }
 });

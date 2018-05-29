@@ -32,3 +32,5 @@ shell-server
 dynamic-import
 iron:router
 useraccounts:iron-routing
+percolate:synced-cron
+raix:handlebar-helpers

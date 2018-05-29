@@ -1,6 +1,6 @@
 Meteor.publish('activeUsers', function() {
   return Meteor.users.find({},
-    {fields: {username: 1, 'status.online': 1, 'profile.avatarUrl': 1, 'profile.numPomodoros': 1, 'status.lastLogin.date': 1}, sort: {'status.lastLogin.date': -1, 'profile.numPomodoros': 1}, limit: 50}
+    {fields: {username: 1, 'status.online': 1, 'profile.avatarUrl': 1, 'profile.weeklyPomodoros': 1, 'profile.totalPomodoros': 1, 'status.lastLogin.date': 1}, sort: {'status.online': -1, 'profile.weeklyPomodoros': -1}, limit: 50}
   );
 });
 

@@ -1,13 +1,13 @@
 <template name="userPill">
-  <div class="user" id="user-pill">
-    <div id="avatar-wrap" data-trigger="hover" data-toggle="popover" data-placement="left" data-content="{{username}}">
-        <img class="avatar-image {{userStatusClass}}" src="{{profile.avatarUrl}}">
+  <div class="user" id="user-pill" data-trigger="hover" data-toggle="popover" data-html="true" data-placement="left" data-content="<strong>{{username}}</strong><br/>week: {{ profile.weeklyPomodoros }}<br/>total: {{ profile.totalPomodoros }}">
+    <div id="avatar-wrap">
+      <img class="avatar-image {{userStatusClass}}" src="{{profile.avatarUrl}}">
     </div>
-    <div class="user-stats">
-      {{#if profile.numPomodoros}}
-        {{profile.numPomodoros}}
-        <img class="tomato-icon" src="tomato_small.png">
-      {{/if}}
-    </div>
+    {{#if $or profile.weeklyPomodoros profile.totalPomodoros}}
+      <img class="tomato-icon" src="tomato_small.png">
+      <div class="user-stats">
+        {{profile.weeklyPomodoros}}
+      </div>
+    {{/if}}
   </div>
 </template>
