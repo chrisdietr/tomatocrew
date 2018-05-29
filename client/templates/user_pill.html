@@ -3,11 +3,15 @@
     <div id="avatar-wrap">
       <img class="avatar-image {{userStatusClass}}" src="{{profile.avatarUrl}}">
     </div>
-    {{#if profile.weeklyPomodoros}}
-      <img class="tomato-icon" src="tomato_small.png">
+
       <div class="user-stats">
-        {{profile.weeklyPomodoros}}
+        {{ profile.weeklyPomodoros }}
+        {{#if profile.weeklyPomodoros}}
+          <img class="tomato-icon" src="tomato_small.png">
+        {{/if}}
+        <br/>
+        <span class="total-pomodoros-text">{{ profile.totalPomodoros }}</span>
       </div>
-    {{/if}}
+
   </div>
 </template>

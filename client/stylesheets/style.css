@@ -74,6 +74,11 @@ body { padding-top: 30px; }
 .tomato-icon {
   width: 14px;
   height: 14px;
+  float: right;
+}
+
+.total-pomodoros-text {
+  color: lightgray;
 }
 
 #activity-wrapper {
@@ -135,7 +140,7 @@ body { padding-top: 30px; }
 #user-pill {
   padding: 5px;
   /*background: #afa;*/
-  width: 120px;
+  width: 140px;
   /*width: 280px;*/
   height: 60px;
 }
